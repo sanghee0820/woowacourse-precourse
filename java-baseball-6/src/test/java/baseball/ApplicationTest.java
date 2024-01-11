@@ -1,6 +1,11 @@
 package baseball;
 
+import baseball.service.ValueGenerator;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -28,6 +33,12 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @RepeatedTest(3000)
+    void 랜덤값_생성_테스트(){
+        Set<Integer> randomSet = new HashSet<>(ValueGenerator.getRandomValue());
+        assertThat(randomSet.size()).isEqualTo(3);
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
