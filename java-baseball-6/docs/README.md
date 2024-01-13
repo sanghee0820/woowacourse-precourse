@@ -16,3 +16,9 @@
         - [x] 메뉴 입력값 유닛 테스팅
     - [x] 입력 받는 로직
     - [x] 출력 하는 로직
+
+## 개선 예정 (1.13기준)
+
+- [ ] IllegalArgumentException 개선 (상속)
+- [ ] Menu Type Enum타입으로 전환
+- 
