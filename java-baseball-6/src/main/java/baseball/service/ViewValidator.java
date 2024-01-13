@@ -19,7 +19,7 @@ public final class ViewValidator {
     public static Integer validateMenu(String menu) {
         menu = checkMenuLength(menu);
         Integer integerTypeMenu = checkMenuType(menu);
-        if (integerTypeMenu.equals(END_GAME) && integerTypeMenu.equals(RESTART_GAME)) {
+        if (!(integerTypeMenu.equals(END_GAME) || integerTypeMenu.equals(RESTART_GAME))) {
             throw new IllegalArgumentException(WRONG_MENU);
         }
         return integerTypeMenu;
