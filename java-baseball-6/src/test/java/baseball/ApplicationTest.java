@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.domain.Computer;
 import baseball.service.ValueGenerator;
+import baseball.service.ViewValidator;
 import baseball.type.Result;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
@@ -17,6 +18,10 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
+    private static final String WRONG_TYPE = "입력이 숫자 타입이 아님.";
+    private static final String WRONG_LENGTH = "입력이 올바른 길이가 아님";
+    private static final String WRONG_MENU = "입력이 올바른 메뉴 번호가 아님.";
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -60,15 +65,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 입력값으로_결과값_생성_테스트(){
-        List<Integer> computerValue = Arrays.asList(1,2,3);
+    void 입력값으로_결과값_생성_테스트() {
+        List<Integer> computerValue = Arrays.asList(1, 2, 3);
         Computer computer = new Computer(computerValue);
         List<List<Integer>> humanValue = Arrays.asList(
-                Arrays.asList(1,2,3),
-                Arrays.asList(2,3,6),
-                Arrays.asList(3,2,1),
-                Arrays.asList(1,4,5),
-                Arrays.asList(5,6,7)
+                Arrays.asList(1, 2, 3),
+                Arrays.asList(2, 3, 6),
+                Arrays.asList(3, 2, 1),
+                Arrays.asList(1, 4, 5),
+                Arrays.asList(5, 6, 7)
         );
         List<Result> expectedResult = Arrays.asList(
                 Result.B0S3,
@@ -77,31 +82,112 @@ class ApplicationTest extends NsTest {
                 Result.B0S1,
                 Result.NOTHING
         );
-        for(int testIndex = 0; testIndex < 5; testIndex++){
+        for (int testIndex = 0; testIndex < 5; testIndex++) {
             try {
                 assertThat(computer.compareValue(humanValue.get(testIndex)))
                         .isEqualTo(expectedResult.get(testIndex));
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("wrong");
             }
         }
     }
+
     @Test
-    void 중복값_입력_테스트(){
-        List<Integer> computerValue = Arrays.asList(1,2,3);
+    void 중복값_입력_테스트() {
+        List<Integer> computerValue = Arrays.asList(1, 2, 3);
         Computer computer = new Computer(computerValue);
         List<List<Integer>> humanValues = Arrays.asList(
-                Arrays.asList(1,1,2),
-                Arrays.asList(2,2,3),
-                Arrays.asList(3,3,3),
-                Arrays.asList(1,5,5),
-                Arrays.asList(5,7,7)
+                Arrays.asList(1, 1, 2),
+                Arrays.asList(2, 2, 3),
+                Arrays.asList(3, 3, 3),
+                Arrays.asList(1, 5, 5),
+                Arrays.asList(5, 7, 7)
         );
-        for(List<Integer> humanValue: humanValues){
+        for (List<Integer> humanValue : humanValues) {
             assertThatThrownBy(() -> computer.compareValue(humanValue))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
+
+    @Test
+    void 올바른_입력값_테스트() {
+        List<String> inputValues = Arrays.asList(
+                "123  ", "456  ", "789"
+        );
+        List<List<Integer>> outputValue = Arrays.asList(
+                Arrays.asList(1, 2, 3),
+                Arrays.asList(4, 5, 6),
+                Arrays.asList(7, 8, 9)
+        );
+        for (int index = 0; index < inputValues.size(); index++) {
+            assertThat(ViewValidator.validateInput(inputValues.get(index))).
+                    isEqualTo(outputValue.get(index));
+        }
+    }
+
+    @Test
+    void 타입_입력값_테스트() {
+        List<String> inputValues = Arrays.asList(
+                "12a", "b56", "7c9"
+        );
+        for (String inputValue : inputValues) {
+            assertThatThrownBy(() -> ViewValidator.validateInput(inputValue))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(WRONG_TYPE);
+        }
+    }
+
+    @Test
+    void 길이_입력값_테스트() {
+        List<String> inputValues = Arrays.asList(
+                "12a1", "b562", "7c93"
+        );
+        for (String inputValue : inputValues) {
+            assertThatThrownBy(() -> ViewValidator.validateInput(inputValue))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(WRONG_LENGTH);
+        }
+    }
+
+    @Test
+    void 올바른_메뉴_테스트() {
+        List<String> menuValues = Arrays.asList(
+                "1 ", "2"
+        );
+        List<Integer> outputValue = Arrays.asList(
+                1,
+                2
+        );
+        for (int index = 0; index < menuValues.size(); index++) {
+            assertThat(ViewValidator.validateMenu(menuValues.get(index))).
+                    isEqualTo(outputValue.get(index));
+        }
+    }
+
+    @Test
+    void 타입_메뉴_테스트() {
+        List<String> inputValues = Arrays.asList(
+                "a", "b", "d"
+        );
+        for (String inputValue : inputValues) {
+            assertThatThrownBy(() -> ViewValidator.validateMenu(inputValue))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(WRONG_TYPE);
+        }
+    }
+
+    @Test
+    void 길이_메뉴_테스트() {
+        List<String> inputValues = Arrays.asList(
+                "12a1", "b562", "7c93"
+        );
+        for (String inputValue : inputValues) {
+            assertThatThrownBy(() -> ViewValidator.validateMenu(inputValue))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(WRONG_LENGTH);
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
