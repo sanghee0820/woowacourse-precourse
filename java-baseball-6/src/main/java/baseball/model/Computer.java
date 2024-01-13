@@ -1,7 +1,7 @@
-package baseball.domain;
+package baseball.model;
 
-import baseball.service.ValueGenerator;
 import baseball.type.Result;
+import baseball.util.ValueGenerator;
 import java.util.HashSet;
 import java.util.List;
 

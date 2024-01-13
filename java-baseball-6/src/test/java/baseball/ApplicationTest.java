@@ -5,10 +5,10 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.domain.Computer;
-import baseball.service.ValueGenerator;
-import baseball.service.ViewValidator;
+import baseball.model.Computer;
 import baseball.type.Result;
+import baseball.util.ValueGenerator;
+import baseball.util.ViewValidator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
 import java.util.HashSet;

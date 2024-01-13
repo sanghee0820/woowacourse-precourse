@@ -1,8 +1,8 @@
 package baseball.controller;
 
-import baseball.domain.Computer;
-import baseball.service.ViewValidator;
+import baseball.model.Computer;
 import baseball.type.Result;
+import baseball.util.ViewValidator;
 import baseball.view.GameView;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
