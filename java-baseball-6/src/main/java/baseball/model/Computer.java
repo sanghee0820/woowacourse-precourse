@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.error.WrongLengthError;
 import baseball.type.Result;
 import baseball.util.ValueGenerator;
 import java.util.HashSet;
@@ -32,10 +33,10 @@ public class Computer {
         return Result.getType(ball, strike);
     }
 
-    private void validateInput(List<Integer> input) throws IllegalArgumentException {
+    private void validateInput(List<Integer> input) throws WrongLengthError {
         HashSet<Integer> hashSet = new HashSet<>(input);
         if (hashSet.size() != 3) {
-            throw new IllegalArgumentException();
+            throw new WrongLengthError(": Caused In Computer");
         }
     }
 }

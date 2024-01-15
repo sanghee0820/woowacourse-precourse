@@ -1,13 +1,12 @@
 package baseball.util;
 
+import baseball.error.WrongLengthError;
+import baseball.error.WrongMenuError;
+import baseball.error.WrongTypeError;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class ViewValidator {
-    private static final String WRONG_TYPE = "입력이 숫자 타입이 아님.";
-    private static final String WRONG_LENGTH = "입력이 올바른 길이가 아님";
-    private static final String WRONG_MENU = "입력이 올바른 메뉴 번호가 아님.";
-
     private static final Integer END_GAME = 2;
     private static final Integer RESTART_GAME = 1;
 
@@ -20,7 +19,7 @@ public final class ViewValidator {
         menu = checkMenuLength(menu);
         Integer integerTypeMenu = checkMenuType(menu);
         if (!(integerTypeMenu.equals(END_GAME) || integerTypeMenu.equals(RESTART_GAME))) {
-            throw new IllegalArgumentException(WRONG_MENU);
+            throw new WrongMenuError(": Caused In validateMenu");
         }
         return integerTypeMenu;
     }
@@ -28,7 +27,7 @@ public final class ViewValidator {
     private static String checkInputLength(String input) {
         input = input.replaceAll(" ", "");
         if (input.length() != 3) {
-            throw new IllegalArgumentException(WRONG_LENGTH);
+            throw new WrongLengthError(": Caused In Input");
         }
         return input;
     }
@@ -40,7 +39,7 @@ public final class ViewValidator {
             int numericValue = Character.getNumericValue(ch);
 
             if (numericValue < 0 || numericValue > 9) {
-                throw new IllegalArgumentException(WRONG_TYPE);
+                throw new WrongTypeError(": Caused in Input");
             }
 
             integerInput.add(index, numericValue);
@@ -51,7 +50,7 @@ public final class ViewValidator {
     private static String checkMenuLength(String input) {
         input = input.replaceAll(" ", "");
         if (input.length() != 1) {
-            throw new IllegalArgumentException(WRONG_LENGTH);
+            throw new WrongLengthError(": Caused in Menu");
         }
         return input;
     }
@@ -61,7 +60,7 @@ public final class ViewValidator {
         int numericValue = Character.getNumericValue(ch);
 
         if (numericValue < 0 || numericValue > 9) {
-            throw new IllegalArgumentException(WRONG_TYPE);
+            throw new WrongTypeError(": Caused in InputType");
         }
         return numericValue;
     }
