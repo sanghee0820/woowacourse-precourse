@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.model.RacingCar;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -31,6 +32,12 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 차량_이동_테스트(){
+        RacingCar racingCar = new RacingCar("test");
+        racingCar.move();
+        assertThat(racingCar.toString()).isEqualTo("test : -");
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
