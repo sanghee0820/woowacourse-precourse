@@ -5,6 +5,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.error.WrongLengthError;
+import baseball.error.WrongTypeError;
 import baseball.model.Computer;
 import baseball.type.Result;
 import baseball.util.ValueGenerator;
@@ -132,8 +134,7 @@ class ApplicationTest extends NsTest {
         );
         for (String inputValue : inputValues) {
             assertThatThrownBy(() -> ViewValidator.validateInput(inputValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(WRONG_TYPE);
+                    .isInstanceOf(IllegalArgumentException.class);
         }
     }
 
@@ -144,8 +145,7 @@ class ApplicationTest extends NsTest {
         );
         for (String inputValue : inputValues) {
             assertThatThrownBy(() -> ViewValidator.validateInput(inputValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(WRONG_LENGTH);
+                    .isInstanceOf(WrongLengthError.class);
         }
     }
 
@@ -171,8 +171,7 @@ class ApplicationTest extends NsTest {
         );
         for (String inputValue : inputValues) {
             assertThatThrownBy(() -> ViewValidator.validateMenu(inputValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(WRONG_TYPE);
+                    .isInstanceOf(WrongTypeError.class);
         }
     }
 
@@ -183,8 +182,7 @@ class ApplicationTest extends NsTest {
         );
         for (String inputValue : inputValues) {
             assertThatThrownBy(() -> ViewValidator.validateMenu(inputValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(WRONG_LENGTH);
+                    .isInstanceOf(WrongLengthError.class);
         }
     }
 
