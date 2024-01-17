@@ -17,8 +17,11 @@
     - [x] 입력 받는 로직
     - [x] 출력 하는 로직
 
-## 개선 예정 (1.13기준)
+## 개선 완료
 
-- [ ] IllegalArgumentException 개선 (상속)
-- [ ] Menu Type Enum타입으로 전환
-- 
+- [x] IllegalArgumentException 개선 (상속)
+
+## 개선 예정
+
+- [ ] Menu Type Enum 타입으로 전환
+- [ ] View OOP 적용.
