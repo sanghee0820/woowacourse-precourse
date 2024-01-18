@@ -1,8 +1,12 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.model.RacingCar;
+import racingcar.model.Track;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -37,6 +41,18 @@ class ApplicationTest extends NsTest {
         RacingCar racingCar = new RacingCar("test");
         racingCar.move();
         assertThat(racingCar.toString()).isEqualTo("test : -");
+    }
+
+    @Test
+    void 트랙_참여자반환_테스트(){
+        List<RacingCar> participants = new ArrayList<>(Arrays.asList(
+                new RacingCar("Test1"),
+                new RacingCar("Test2"),
+                new RacingCar("Test2")
+        ));
+        Track track = new Track(participants);
+
+        assertThat(track.getParticipants()).isEqualTo(participants);
     }
     @Override
     public void runMain() {
