@@ -54,6 +54,21 @@ class ApplicationTest extends NsTest {
 
         assertThat(track.getParticipants()).isEqualTo(participants);
     }
+
+    @Test
+    void 트랙_선두반환_테스트(){
+        List<RacingCar> participants = new ArrayList<>(Arrays.asList(
+                new RacingCar("Test1"),
+                new RacingCar("Test2"),
+                new RacingCar("Test2")
+        ));
+        Track track = new Track(participants);
+
+        participants.get(1).move();
+        track.updateWinner();
+
+        assertThat(track.getWinners()).contains(participants.get(1));
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
