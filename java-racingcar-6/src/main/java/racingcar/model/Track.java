@@ -29,4 +29,18 @@ public class Track {
         return winners;
     }
 
+    public void updateWinner(){
+        winners.clear();
+        int maxPosition = 0;
+        for(RacingCar racingCar : participants){
+            if(maxPosition < racingCar.getPosition()){
+                maxPosition = racingCar.getPosition();
+            }
+        }
+        for(RacingCar racingCar : participants){
+            if(maxPosition == racingCar.getPosition()){
+                winners.add(racingCar);
+            }
+        }
+    }
 }

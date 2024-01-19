@@ -9,6 +9,10 @@ public class RacingCar {
         this.position = 0;
     }
 
+    public Integer getPosition(){
+        return this.position;
+    }
+
     public void move(){
         this.position++;
     }
