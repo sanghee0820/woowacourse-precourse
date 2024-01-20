@@ -4,7 +4,10 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import racingcar.controller.GameController;
 import racingcar.model.RacingCar;
 import racingcar.model.Track;
 
@@ -68,6 +71,42 @@ class ApplicationTest extends NsTest {
         track.updateWinner();
 
         assertThat(track.getWinners()).contains(participants.get(1));
+    }
+    @Test
+    void 게임컨트롤러_참가자_반환_테스트(){
+        List<String> participantsName = new ArrayList<>(Arrays.asList(
+                "Test1",
+                "Test2",
+                "Test3"
+        ));
+        List<String> result = new ArrayList<>(Arrays.asList(
+                "Test1 : ",
+                "Test2 : ",
+                "Test3 : "
+        ));
+        GameController gameController = new GameController();
+        gameController.addParticipant(participantsName);
+        assertThat(gameController.getParticipants().stream()
+                .map(RacingCar::toString)
+                .collect(Collectors.toList()))
+                .isEqualTo(result);
+
+    }
+
+    @Test
+    @RepeatedTest(100)
+    void 게임컨트롤러_단계_반환_테스트(){
+        List<String> participantsName = new ArrayList<>(Arrays.asList(
+                "Test1"
+        ));
+        List<String> result = new ArrayList<>(Arrays.asList(
+                "Test1 : ",
+                "Test1 : -"
+        ));
+        GameController gameController = new GameController();
+        gameController.addParticipant(participantsName);
+        gameController.takeStep();
+        assertThat(result).contains(gameController.getParticipants().get(0).toString());
     }
     @Override
     public void runMain() {
