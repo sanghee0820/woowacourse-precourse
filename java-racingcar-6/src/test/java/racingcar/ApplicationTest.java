@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.service.GameService;
 import racingcar.model.RacingCar;
 import racingcar.model.Track;
+import racingcar.util.Parser;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -107,6 +108,15 @@ class ApplicationTest extends NsTest {
         gameService.addParticipant(participantsName);
         gameService.takeStep();
         assertThat(result).contains(gameService.getParticipants().get(0).toString());
+    }
+
+    @Test
+    void 이름_파싱_테스트(){
+        String names = "test1, test2, test3";
+        List<String> parsedNames = new ArrayList<>(Arrays.asList(
+                "test1","test2","test3"
+        ));
+        assertThat(Parser.parseName(names)).isEqualTo(parsedNames);
     }
     @Override
     public void runMain() {
