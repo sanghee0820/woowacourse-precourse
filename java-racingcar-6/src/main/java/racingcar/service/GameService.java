@@ -1,14 +1,14 @@
-package racingcar.controller;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.model.RacingCar;
 import racingcar.model.Track;
 
-public class GameController {
+public class GameService {
     private Track track;
 
-    public GameController(){
+    public GameService(){
         this.track = new Track();
     }
 

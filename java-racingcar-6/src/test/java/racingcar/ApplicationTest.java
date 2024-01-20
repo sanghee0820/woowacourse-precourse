@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import racingcar.controller.GameController;
+import racingcar.service.GameService;
 import racingcar.model.RacingCar;
 import racingcar.model.Track;
 
@@ -84,9 +84,9 @@ class ApplicationTest extends NsTest {
                 "Test2 : ",
                 "Test3 : "
         ));
-        GameController gameController = new GameController();
-        gameController.addParticipant(participantsName);
-        assertThat(gameController.getParticipants().stream()
+        GameService gameService = new GameService();
+        gameService.addParticipant(participantsName);
+        assertThat(gameService.getParticipants().stream()
                 .map(RacingCar::toString)
                 .collect(Collectors.toList()))
                 .isEqualTo(result);
@@ -103,10 +103,10 @@ class ApplicationTest extends NsTest {
                 "Test1 : ",
                 "Test1 : -"
         ));
-        GameController gameController = new GameController();
-        gameController.addParticipant(participantsName);
-        gameController.takeStep();
-        assertThat(result).contains(gameController.getParticipants().get(0).toString());
+        GameService gameService = new GameService();
+        gameService.addParticipant(participantsName);
+        gameService.takeStep();
+        assertThat(result).contains(gameService.getParticipants().get(0).toString());
     }
     @Override
     public void runMain() {
