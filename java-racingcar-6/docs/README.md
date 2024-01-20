@@ -12,6 +12,10 @@
     - [X] 유닛 테스팅
 - [ ] GameController
   - [ ] Input 처리
+    - [ ] 이름 파싱
+      - [ ] 유닛 테스팅
+    - [ ] 시행 횟수 형변환
+      - [ ] 유닛 테스팅
   - [ ] Output 처리 
 - [ ] 예외 처리
   - [ ] 차량 이름이 5자 이상 일때 ( ExcessiveParticipantsNameException )
