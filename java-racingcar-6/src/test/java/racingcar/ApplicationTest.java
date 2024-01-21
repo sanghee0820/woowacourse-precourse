@@ -7,14 +7,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.ExcessiveParticipantsNameException;
+import racingcar.exception.WrongCountTypeException;
 import racingcar.service.GameService;
 import racingcar.model.RacingCar;
 import racingcar.model.Track;
+import racingcar.util.GameValidator;
 import racingcar.util.Parser;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
@@ -117,6 +121,43 @@ class ApplicationTest extends NsTest {
                 "test1","test2","test3"
         ));
         assertThat(Parser.parseName(names)).isEqualTo(parsedNames);
+    }
+
+    @Test
+    void 잘못된_이름_길이_확인_테스트(){
+        List<String> parsedNames = new ArrayList<>(Arrays.asList(
+                "test1","test255","test3"
+        ));
+        assertThatThrownBy(() -> GameValidator.validateName(parsedNames)).isInstanceOf(ExcessiveParticipantsNameException.class);
+    }
+
+    @Test
+    void 올바른_이름_파싱_테스트(){
+        List<String> parsedNames = new ArrayList<>(Arrays.asList(
+                "test1","test2","test3"
+        ));
+        assertThatCode(() -> GameValidator.validateName(parsedNames))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    void 잘못된_숫자형_테스트(){
+        List<String> counts = Arrays.asList(
+                "k", "-", "A", "ㅁ", "안"
+        );
+        assertThatThrownBy(() -> counts
+                .forEach(GameValidator::validateGameCount))
+                .isInstanceOf(WrongCountTypeException.class);
+    }
+
+    @Test
+    void 숫자형_확인_테스트(){
+        List<String> counts = Arrays.asList(
+                "1", "2", "123", "55", "4"
+        );
+        assertThatCode(() -> counts
+                .forEach(GameValidator::validateGameCount))
+                .doesNotThrowAnyException();
     }
     @Override
     public void runMain() {
