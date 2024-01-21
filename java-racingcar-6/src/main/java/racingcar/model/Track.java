@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Track {
 
-    private List<RacingCar> participants;
+    private final List<RacingCar> participants;
 
-    private List<RacingCar> winners;
+    private final List<RacingCar> winners;
     public Track(){
         this(new ArrayList<>());
     }
