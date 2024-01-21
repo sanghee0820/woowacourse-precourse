@@ -27,7 +27,7 @@ public class GameService {
 
     public void takeStep(){
         for(RacingCar racingCar: track.getParticipants()){
-            if(Randoms.pickNumberInRange(0,9) > 4){
+            if(Randoms.pickNumberInRange(0,9) > 3){
                 racingCar.move();
             }
         }
