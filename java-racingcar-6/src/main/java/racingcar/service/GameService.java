@@ -6,7 +6,7 @@ import racingcar.model.RacingCar;
 import racingcar.model.Track;
 
 public class GameService {
-    private Track track;
+    private final Track track;
 
     public GameService(){
         this.track = new Track();
@@ -18,6 +18,11 @@ public class GameService {
 
     public List<RacingCar> getParticipants(){
         return track.getParticipants();
+    }
+
+    public List<RacingCar> getWinner(){
+        track.updateWinner();
+        return track.getWinners();
     }
 
     public void takeStep(){
