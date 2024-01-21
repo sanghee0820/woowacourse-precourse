@@ -2,7 +2,6 @@ package racingcar.util;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Parser {
 
@@ -10,10 +9,12 @@ public class Parser {
         List<String> parsedNames = Arrays.stream(names.split(","))
                 .map(String::trim)
                 .toList();
+        GameValidator.validateName(parsedNames);
         return parsedNames;
     }
 
     public static Integer parsCount(String count){
+        GameValidator.validateGameCount(count);
         return Integer.valueOf(count);
     }
 }
