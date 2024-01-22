@@ -20,8 +20,8 @@
 ## 개선 완료
 
 - [x] IllegalArgumentException 개선 (상속)
+- [x] Menu Type Enum 타입으로 전환
 
 ## 개선 예정
 
-- [ ] Menu Type Enum 타입으로 전환
 - [ ] View OOP 적용.
