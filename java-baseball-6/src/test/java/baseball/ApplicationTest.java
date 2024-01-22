@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import baseball.error.WrongLengthError;
 import baseball.error.WrongTypeError;
 import baseball.model.Computer;
+import baseball.type.GameMenu;
 import baseball.type.Result;
 import baseball.util.ValueGenerator;
 import baseball.util.ViewValidator;
@@ -154,9 +155,9 @@ class ApplicationTest extends NsTest {
         List<String> menuValues = Arrays.asList(
                 "1 ", "2"
         );
-        List<Integer> outputValue = Arrays.asList(
-                1,
-                2
+        List<GameMenu> outputValue = Arrays.asList(
+                GameMenu.RESTART_GAME,
+                GameMenu.END_GAME
         );
         for (int index = 0; index < menuValues.size(); index++) {
             assertThat(ViewValidator.validateMenu(menuValues.get(index))).

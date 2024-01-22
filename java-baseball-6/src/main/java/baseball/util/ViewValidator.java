@@ -1,27 +1,21 @@
 package baseball.util;
 
 import baseball.error.WrongLengthError;
-import baseball.error.WrongMenuError;
 import baseball.error.WrongTypeError;
+import baseball.type.GameMenu;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class ViewValidator {
-    private static final Integer END_GAME = 2;
-    private static final Integer RESTART_GAME = 1;
-
     public static List<Integer> validateInput(String input) {
         input = checkInputLength(input);
         return checkInputType(input);
     }
 
-    public static Integer validateMenu(String menu) {
+    public static GameMenu validateMenu(String menu) {
         menu = checkMenuLength(menu);
         Integer integerTypeMenu = checkMenuType(menu);
-        if (!(integerTypeMenu.equals(END_GAME) || integerTypeMenu.equals(RESTART_GAME))) {
-            throw new WrongMenuError(": Caused In validateMenu");
-        }
-        return integerTypeMenu;
+        return GameMenu.getMenu(integerTypeMenu);
     }
 
     private static String checkInputLength(String input) {
