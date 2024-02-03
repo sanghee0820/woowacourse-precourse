@@ -1,8 +1,6 @@
 package lotto.model;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import org.assertj.core.util.Sets;
 
 public class Lotto {
@@ -11,6 +9,10 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     private void validate(List<Integer> numbers) {
@@ -30,13 +32,8 @@ public class Lotto {
         }
     }
 
-    public Rank compare(final List<Integer> normal, final int bonus) {
-        Set<Integer> union = new HashSet<>(normal);
-        union.addAll(numbers);
-        int normalCnt = 12 - union.size();
-        if (normalCnt != 5) {
-            return Rank.getRank(normalCnt, false);
-        }
-        return Rank.getRank(normalCnt, numbers.contains(bonus));
+    @Override
+    public String toString() {
+        return this.numbers.toString();
     }
 }
