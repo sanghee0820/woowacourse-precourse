@@ -4,19 +4,20 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import lotto.model.Human;
 import lotto.model.Lotto;
+import lotto.model.Rank;
+import lotto.util.LottoComparator;
 
 public class LottoService {
     private final Human human;
 
     private final List<Integer> normalNumbers;
 
+    private final Integer bonusNumber;
 
-    private final Integer bonusNumbers;
-
-    public LottoService(int budget, List<Integer> normalNumbers, Integer bonusNumbers) {
+    public LottoService(int budget, List<Integer> normalNumbers, Integer bonusNumber) {
         this.human = new Human(budget);
         this.normalNumbers = normalNumbers;
-        this.bonusNumbers = bonusNumbers;
+        this.bonusNumber = bonusNumber;
     }
 
     public void buyLotto() {
@@ -31,6 +32,11 @@ public class LottoService {
 
     public List<Lotto> getLottos() {
         return human.getLottos();
+    }
+
+    public List<Rank> getResult() {
+        return human.getLottos().stream().map(lotto ->
+                LottoComparator.compareLotto(normalNumbers, bonusNumber, lotto)).toList();
     }
 
 }
