@@ -1,7 +1,9 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lotto.model.Human;
 import lotto.model.Lotto;
 import lotto.model.Rank;
@@ -17,7 +19,7 @@ public class LottoService {
     public LottoService(int budget) {
         this.human = new Human(budget);
     }
-    
+
     public void setNormalNumbers(List<Integer> normalNumbers) {
         this.normalNumbers = normalNumbers;
     }
@@ -44,9 +46,18 @@ public class LottoService {
         }
     }
 
-    public List<Rank> getResult() {
-        return human.getLottos().stream().map(lotto ->
+    public Map<Rank, Integer> getResult() {
+        List<Rank> ranks = human.getLottos().stream().map(lotto ->
                 LottoComparator.compareLotto(normalNumbers, bonusNumber, lotto)).toList();
+
+        Map<Rank, Integer> result = new HashMap<>();
+        for (Rank rank : Rank.values()) {
+            result.put(rank, 0);
+        }
+        for (Rank rank : ranks) {
+            result.put(rank, result.get(rank) + 1);
+        }
+        return result;
     }
 
 }
