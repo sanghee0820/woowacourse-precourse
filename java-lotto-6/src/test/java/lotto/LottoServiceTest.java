@@ -12,7 +12,7 @@ public class LottoServiceTest {
     @Test
     @DisplayName("로또 서비스 : 구매 테스트")
     public void buyLotto() {
-        LottoService lottoService = new LottoService(1000, null, 0);
+        LottoService lottoService = new LottoService(1000);
         lottoService.buyLotto();
         assertThat(lottoService.getLottos().size()).isEqualTo(1);
     }
@@ -20,6 +20,6 @@ public class LottoServiceTest {
     @Test
     @DisplayName("로또 서비스 : budget 오류테스트")
     public void budgetErrorTest() {
-        assertThatThrownBy(() -> new LottoService(10, null, 0)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new LottoService(10)).isInstanceOf(IllegalArgumentException.class);
     }
 }

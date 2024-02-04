@@ -10,14 +10,28 @@ import lotto.util.LottoComparator;
 public class LottoService {
     private final Human human;
 
-    private final List<Integer> normalNumbers;
+    private List<Integer> normalNumbers;
 
-    private final Integer bonusNumber;
+    private Integer bonusNumber;
 
-    public LottoService(int budget, List<Integer> normalNumbers, Integer bonusNumber) {
+    public LottoService(int budget) {
         this.human = new Human(budget);
+    }
+    
+    public void setNormalNumbers(List<Integer> normalNumbers) {
         this.normalNumbers = normalNumbers;
+    }
+
+    public void setBonusNumber(Integer bonusNumber) {
         this.bonusNumber = bonusNumber;
+    }
+
+    public List<Lotto> getLottos() {
+        return human.getLottos();
+    }
+
+    public Integer getBudget() {
+        return human.getBudget();
     }
 
     public void buyLotto() {
@@ -28,10 +42,6 @@ public class LottoService {
                 break;
             }
         }
-    }
-
-    public List<Lotto> getLottos() {
-        return human.getLottos();
     }
 
     public List<Rank> getResult() {
