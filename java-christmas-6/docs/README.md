@@ -1,7 +1,7 @@
 ## 구현 예정 목록
 - [ ] Enum 타입
-  - [ ] Category
-    - [ ] Food
+  - [x] Category
+    - [x] Food
   - [ ] Day
   - [ ] Discount
   - [ ] Badge
