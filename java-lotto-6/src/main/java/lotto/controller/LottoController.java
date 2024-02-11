@@ -4,8 +4,8 @@ import java.util.List;
 import lotto.service.LottoResultService;
 import lotto.service.LottoService;
 import lotto.util.InputValidator;
-import view.InputView;
-import view.OutputView;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
 
