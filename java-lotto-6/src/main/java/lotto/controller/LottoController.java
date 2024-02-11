@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import java.util.List;
+import lotto.service.LottoResultService;
 import lotto.service.LottoService;
 import lotto.util.InputValidator;
 import view.InputView;
@@ -9,6 +10,7 @@ import view.OutputView;
 public class LottoController {
 
     private LottoService lottoService;
+    private LottoResultService lottoResultService;
 
     public void run() {
         setLottoService();
@@ -23,8 +25,7 @@ public class LottoController {
     }
 
     private void setNumbers() {
-        lottoService.setNormalNumbers(this.getNormalNumbers());
-        lottoService.setBonusNumber(this.getBonusNumbers());
+        this.lottoResultService = new LottoResultService(this.getNormalNumbers(), this.getBonusNumbers());
     }
 
     private int getBudget() {
@@ -65,6 +66,6 @@ public class LottoController {
 
     private void resultDesc() {
 
-        OutputView.rankDesc(lottoService.getResult(), lottoService.getBudget());
+        OutputView.rankDesc(lottoResultService.getResult(lottoService.getLottos()), lottoService.getBudget());
     }
 }

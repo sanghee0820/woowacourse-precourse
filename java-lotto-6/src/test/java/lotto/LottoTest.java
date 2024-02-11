@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.model.BonusNumber;
 import lotto.model.Lotto;
 import lotto.model.Rank;
 import lotto.util.LottoComparator;
@@ -40,7 +41,8 @@ class LottoTest {
         List<Integer> bonusNumbers = List.of(15, 5, 10, 11);
         List<Rank> result = List.of(Rank.FIFTH_RANK, Rank.FORTH_RANK, Rank.THIRD_RANK, Rank.FIRST_RANK);
         for (int i = 0; i < normalNumbers.size(); i++) {
-            assertThat(LottoComparator.compareLotto(normalNumbers.get(i), bonusNumbers.get(i), lotto)).isEqualTo(
+            assertThat(LottoComparator.compareLotto(new Lotto(normalNumbers.get(i)),
+                    new BonusNumber(bonusNumbers.get(i)), lotto)).isEqualTo(
                     result.get(i));
         }
 
