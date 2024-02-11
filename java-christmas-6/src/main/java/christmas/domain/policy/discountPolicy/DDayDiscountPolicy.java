@@ -1,13 +1,15 @@
 package christmas.domain.policy.discountPolicy;
 
+import christmas.domain.Visitor;
+
 public class DDayDiscountPolicy implements DiscountPolicy {
     private final String desc = "크리스마스 디데이 할인";
     @Override
-    public int getDiscount(int day, int price) {
-        if(!isDiscountable(price)){
+    public int getDiscount(Visitor visitor) {
+        if(!isDiscountable(visitor.getTotalPrice())){
             return 0;
         }
-        return discount(day);
+        return discount(visitor.getVisitDay());
     }
 
     private int discount(int day){
