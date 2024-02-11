@@ -1,0 +1,22 @@
+## 구현 예정 목록
+- [ ] Enum 타입
+  - [ ] Category
+    - [ ] Food
+  - [ ] Day
+  - [ ] Discount
+  - [ ] Badge
+  - [ ] Gift
+- [ ] domain
+  - [ ] DiscountPolicy
+    - [ ] DDayDiscountPolicy
+    - [ ] WeekDayDiscountPolicy
+    - [ ] WeekendDiscountPolicy
+    - [ ] SpecialDiscountPolicy
+  - [ ] GiftPolicy
+    - [ ] GiftPolicy
+  - [ ] BadgePolicy
+    - [ ] BadgePolicy
+  - [ ] User
+    - [ ] VisitedDay
+    - [ ] Order
+  - [ ] Result
