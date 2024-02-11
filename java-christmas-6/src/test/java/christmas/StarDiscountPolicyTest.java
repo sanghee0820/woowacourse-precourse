@@ -1,5 +1,7 @@
 package christmas;
 
+import christmas.domain.Visitor;
+import christmas.domain.constant.Food;
 import christmas.domain.policy.discountPolicy.DiscountPolicy;
 import christmas.domain.policy.discountPolicy.StarDiscountPolicy;
 import java.util.ArrayList;
@@ -13,29 +15,29 @@ public class StarDiscountPolicyTest {
     @Test
     @DisplayName("구매금액 부족 테스트")
     public void lowPriceTest(){
-        List<List<Integer>> input = new ArrayList<>();
-        input.add(List.of(4, 500));
-        input.add(List.of(4, 300));
+        List<Visitor> input = new ArrayList<>();
+        input.add(new Visitor(List.of(Food.ICE_CREAM), 15));
+        input.add(new Visitor(List.of(Food.ZERO_COKE), 20));
         List<Integer> output = new ArrayList<>(List.of(0, 0));
         DiscountPolicy discountPolicy = new StarDiscountPolicy();
 
         Assertions.assertThat(
-                input.stream().map((data) -> discountPolicy.getDiscount(data.get(0), data.get(1)))
+                input.stream().map(discountPolicy::getDiscount)
         ).isEqualTo(output);
     }
 
     @Test
     @DisplayName("SpecialDay 테스트")
     public void specialDayTest(){
-        List<List<Integer>> input = new ArrayList<>();
-        input.add(List.of(3, 10000));
-        input.add(List.of(10, 20000));
-        input.add(List.of(11, 0));
+        List<Visitor> input = new ArrayList<>();
+        input.add(new Visitor(List.of(Food.BBQ_LIB), 3));
+        input.add(new Visitor(List.of(Food.BBQ_LIB), 10));
+        input.add(new Visitor(List.of(Food.BBQ_LIB), 11));
         List<Integer> output = new ArrayList<>(List.of(1000, 1000, 0));
         DiscountPolicy discountPolicy = new StarDiscountPolicy();
 
         Assertions.assertThat(
-                input.stream().map((data) -> discountPolicy.getDiscount(data.get(0), data.get(1)))
+                input.stream().map(discountPolicy::getDiscount)
         ).isEqualTo(output);
     }
 }
