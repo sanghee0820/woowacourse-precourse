@@ -1,11 +1,9 @@
 ## 구현 예정 목록
-- [ ] Enum 타입
+- [x] Enum 타입
   - [x] Category
     - [x] Food
-  - [ ] Day
-  - [ ] Discount
-  - [ ] Badge
-  - [ ] Gift
+  - [x] Day
+  - [x] Badge
 - [ ] domain
   - [ ] DiscountPolicy
     - [ ] DDayDiscountPolicy
