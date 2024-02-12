@@ -7,4 +7,5 @@ public interface DiscountPolicy extends Discountable {
 
     int getDiscount(Visitor visitor);
 
+    String getDesc();
 }

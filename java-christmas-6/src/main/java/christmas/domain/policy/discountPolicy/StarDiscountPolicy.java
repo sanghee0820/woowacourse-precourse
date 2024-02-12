@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StarDiscountPolicy implements DiscountPolicy{
-    private final String desc = "특별할인";
+    private final String DESC = "특별할인";
+    private final Integer DEFAULT_DISCOUNT_PRICE = 1000;
     @Override
     public int getDiscount(Visitor visitor) {
         if(isDiscountable(visitor)){
@@ -15,9 +16,14 @@ public class StarDiscountPolicy implements DiscountPolicy{
         return 0;
     }
 
+    @Override
+    public String getDesc() {
+        return DESC;
+    }
+
     private int discount(VisitDay day){
         if(day.isStarDay()){
-            return 1000;
+            return DEFAULT_DISCOUNT_PRICE;
         }
         return 0;
     }

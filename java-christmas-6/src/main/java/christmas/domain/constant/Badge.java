@@ -20,4 +20,8 @@ public enum Badge{
         }
         return SANTA;
     }
+
+    public String getDesc() {
+        return desc;
+    }
 }
