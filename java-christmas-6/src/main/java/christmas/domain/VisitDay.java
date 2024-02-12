@@ -26,7 +26,7 @@ public class VisitDay {
     }
 
     public boolean isAfterChristmas(){
-        return this.day <= 25;
+        return this.day > 25;
     }
 
     public int dDayOfChristmas(){
