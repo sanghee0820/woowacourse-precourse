@@ -10,7 +10,7 @@ import java.util.List;
 public class DayOfWeekDiscountPolicy implements DiscountPolicy{
     @Override
     public int getDiscount(Visitor visitor) {
-        if(isDiscountable(visitor.getTotalPrice())){
+        if(isDiscountable(visitor)){
             return discount(visitor.getVisitDay(), visitor.getOrders());
         }
         return 0;

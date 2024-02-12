@@ -9,7 +9,7 @@ public class StarDiscountPolicy implements DiscountPolicy{
     private final String desc = "특별할인";
     @Override
     public int getDiscount(Visitor visitor) {
-        if(isDiscountable(visitor.getTotalPrice())){
+        if(isDiscountable(visitor)){
             return discount(visitor.getVisitDay());
         }
         return 0;

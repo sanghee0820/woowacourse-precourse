@@ -1,12 +1,10 @@
 package christmas.domain.policy.discountPolicy;
 
 import christmas.domain.Visitor;
+import christmas.domain.policy.Discountable;
 
-public interface DiscountPolicy {
+public interface DiscountPolicy extends Discountable {
 
-    public int getDiscount(Visitor visitor);
+    int getDiscount(Visitor visitor);
 
-    default boolean isDiscountable(int price){
-        return price >= 10000;
-    }
 }
