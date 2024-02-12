@@ -1,9 +1,12 @@
 package christmas.domain.policy.discountPolicy;
 
+import christmas.domain.VisitDay;
 import christmas.domain.Visitor;
 
 public class DDayDiscountPolicy implements DiscountPolicy {
     private final String desc = "크리스마스 디데이 할인";
+    private final Integer defaultDiscount = 1000;
+    private final Integer dDayDiscount = 100;
     @Override
     public int getDiscount(Visitor visitor) {
         if(!isDiscountable(visitor.getTotalPrice())){
@@ -12,10 +15,10 @@ public class DDayDiscountPolicy implements DiscountPolicy {
         return discount(visitor.getVisitDay());
     }
 
-    private int discount(int day){
-        if(day > 25){
+    private int discount(VisitDay day){
+        if(day.isAfterChristmas()){
             return 0;
         }
-        return 1000 + (day - 1) * 100;
+        return defaultDiscount + day.dDayOfChristmas() * dDayDiscount;
     }
 }

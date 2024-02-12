@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Visitor {
     private final List<Food> orders;
-    private final int visitDay;
+    private final VisitDay visitDay;
 
     public Visitor(List<Food> orders, int visitDay){
         this.orders = orders;
-        this.visitDay = visitDay;
+        this.visitDay = new VisitDay(visitDay);
     }
     public int getTotalPrice(){
         return orders.stream().mapToInt(Food::getPrice).sum();
@@ -19,7 +19,7 @@ public class Visitor {
         return this.orders;
     }
 
-    public int getVisitDay() {
+    public VisitDay getVisitDay() {
         return this.visitDay;
     }
 }

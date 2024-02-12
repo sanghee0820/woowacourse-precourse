@@ -1,5 +1,6 @@
 package christmas.domain.policy.discountPolicy;
 
+import christmas.domain.VisitDay;
 import christmas.domain.Visitor;
 import christmas.domain.constant.Category;
 import christmas.domain.constant.Day;
@@ -15,8 +16,8 @@ public class DayOfWeekDiscountPolicy implements DiscountPolicy{
         return 0;
     }
 
-    private int discount(int day, List<Food> orders){
-        if(Day.of(day).isWeekend()){
+    private int discount(VisitDay day, List<Food> orders){
+        if(day.isWeekend()){
             return weekendDiscount(orders);
         }
         return weekDayDiscount(orders);
