@@ -29,7 +29,7 @@ public class DayOfWeekDiscountPolicy implements DiscountPolicy{
                         .count()*2023);
     }
 
-    private int weekDayDiscount(List<Food> orders ){
+    private int weekDayDiscount(List<Food> orders){
         return (int) (orders.stream()
                 .filter((order) -> order.getCategory() == Category.DESERT)
                 .count()*2023);
