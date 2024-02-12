@@ -1,23 +1,22 @@
 package christmas.domain.policy.giftPolicy;
 
 import christmas.domain.Visitor;
-import christmas.domain.constant.Badge;
 import christmas.domain.constant.Food;
 
 public class GiftPolicyImpl implements GiftPolicy{
 
-    public int getGift(Visitor visitor) {
+    public Food getGift(Visitor visitor) {
         if(isDiscountable(visitor)){
             return findGift(visitor.getTotalPrice());
         }
-        return 0;
+        return null;
     }
 
-    private int findGift(int totalPrice){
+    private Food findGift(int totalPrice){
         if(checkTotalPrice(totalPrice)){
-            return 25000;
+            return Food.CHAMPAGNE;
         }
-        return 0;
+        return null;
     }
 
     private boolean checkTotalPrice(int totalPrice){
