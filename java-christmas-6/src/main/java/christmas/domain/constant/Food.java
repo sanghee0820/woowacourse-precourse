@@ -6,7 +6,7 @@ public enum Food {
     CHOCOLATE_CAKE(Category.DESERT, 15000), ICE_CREAM(Category.DESERT, 5000),
     ZERO_COKE(Category.BEVERAGE, 3000), RED_WINE(Category.BEVERAGE,60000), Champagne(Category.BEVERAGE, 25000);
 
-    private  final Category category;
+    private final Category category;
     private final int price;
 
     Food(Category category, int price) {

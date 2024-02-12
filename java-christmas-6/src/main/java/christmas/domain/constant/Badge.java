@@ -1,6 +1,6 @@
 package christmas.domain.constant;
 
-public enum Badge {
+public enum Badge{
     NONE("없음"), STAR("별"), TREE("트리"), SANTA("산타");
 
     private final String desc;
@@ -8,7 +8,7 @@ public enum Badge {
     Badge(String desc){
         this.desc = desc;
     }
-    public Badge of(int discount){
+    public static Badge of(int discount){
         if(discount < 5000){
             return NONE;
         }
