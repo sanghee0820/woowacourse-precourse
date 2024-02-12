@@ -9,7 +9,7 @@ public class DDayDiscountPolicy implements DiscountPolicy {
     private final Integer dDayDiscount = 100;
     @Override
     public int getDiscount(Visitor visitor) {
-        if(!isDiscountable(visitor.getTotalPrice())){
+        if(!isDiscountable(visitor)){
             return 0;
         }
         return discount(visitor.getVisitDay());
