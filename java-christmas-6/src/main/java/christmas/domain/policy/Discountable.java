@@ -5,7 +5,6 @@ import christmas.domain.constant.Category;
 import christmas.domain.constant.Food;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.junit.jupiter.api.Order;
 
 public interface Discountable {
 
