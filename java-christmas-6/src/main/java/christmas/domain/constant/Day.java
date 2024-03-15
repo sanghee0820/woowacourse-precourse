@@ -1,7 +1,7 @@
 package christmas.domain.constant;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
-
 public enum Day {
     MONTHDAY, THUSDAY, WENDSDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
     public static Day of(int day){
