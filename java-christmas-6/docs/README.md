@@ -4,17 +4,17 @@
     - [x] Food
   - [x] Day
   - [x] Badge
-- [ ] domain
-  - [ ] DiscountPolicy
-    - [ ] DDayDiscountPolicy
-    - [ ] WeekDayDiscountPolicy
-    - [ ] WeekendDiscountPolicy
-    - [ ] SpecialDiscountPolicy
-  - [ ] GiftPolicy
-    - [ ] GiftPolicy
-  - [ ] BadgePolicy
-    - [ ] BadgePolicy
-  - [ ] User
-    - [ ] VisitedDay
-    - [ ] Order
-  - [ ] Result
+- [x] domain
+  - [x] DiscountPolicy
+    - [x] DDayDiscountPolicy
+    - [x] WeekDayDiscountPolicy
+    - [x] WeekendDiscountPolicy
+    - [x] StarDiscountPolicy
+  - [x] GiftPolicy
+    - [x] GiftPolicy
+  - [x] BadgePolicy
+    - [x] BadgePolicy
+  - [x] User
+    - [x] VisitedDay
+    - [x] Order
+  - [x] Result
