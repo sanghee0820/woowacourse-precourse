@@ -1,5 +1,6 @@
 package christmas.domain.policy;
 
+import christmas.domain.Order;
 import christmas.domain.Visitor;
 import christmas.domain.constant.Category;
 import christmas.domain.constant.Food;
@@ -15,8 +16,8 @@ public interface Discountable {
     default boolean checkPrice(int price){
         return price >= 10000;
     }
-    default boolean checkOrders(List<Food> orders){
+    default boolean checkOrders(List<Order> orders){
         return !orders.stream().filter
-                ((food) -> food.getCategory() != Category.BEVERAGE).collect(Collectors.toSet()).isEmpty();
+                ((order) -> order.getFood().getCategory() != Category.BEVERAGE).collect(Collectors.toSet()).isEmpty();
     }
 }

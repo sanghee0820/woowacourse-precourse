@@ -4,18 +4,21 @@ import christmas.domain.constant.Food;
 import java.util.List;
 
 public class Visitor {
-    private final List<Food> orders;
+    private final List<Order> orders;
     private final VisitDay visitDay;
 
-    public Visitor(List<Food> orders, int visitDay){
+    public Visitor(List<Order> orders, int visitDay){
         this.orders = orders;
         this.visitDay = new VisitDay(visitDay);
     }
     public int getTotalPrice(){
-        return orders.stream().mapToInt(Food::getPrice).sum();
+        return orders.stream()
+                .mapToInt(order ->
+                        order.getFood().getPrice()*order.getAmount())
+                .sum();
     }
 
-    public List<Food> getOrders(){
+    public List<Order> getOrders(){
         return this.orders;
     }
 

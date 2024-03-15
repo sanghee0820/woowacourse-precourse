@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 public class VisitorResult {
-    private int day;
-    private List<Food> orders;
-    private int totalPrice;
-    private Food gift;
-    private Map<String, Integer> eventResult;
-    private Badge badge;
+    private final int day;
+    private final List<Order> orders;
+    private final int totalPrice;
+    private final Food gift;
+    private final Map<String, Integer> eventResult;
+    private final Badge badge;
 
-    public VisitorResult(int day, List<Food> orders, int totalPrice, Food gift, Map<String, Integer> eventResult,
+    public VisitorResult(int day, List<Order> orders, int totalPrice, Food gift, Map<String, Integer> eventResult,
                          Badge badge) {
         this.day = day;
         this.orders = orders;
@@ -27,7 +27,7 @@ public class VisitorResult {
         return day;
     }
 
-    public List<Food> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 

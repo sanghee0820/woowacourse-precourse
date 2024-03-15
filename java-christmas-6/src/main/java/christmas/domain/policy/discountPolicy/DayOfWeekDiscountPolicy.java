@@ -1,5 +1,6 @@
 package christmas.domain.policy.discountPolicy;
 
+import christmas.domain.Order;
 import christmas.domain.VisitDay;
 import christmas.domain.Visitor;
 import christmas.domain.constant.Category;
@@ -24,22 +25,22 @@ public class DayOfWeekDiscountPolicy implements DiscountPolicy{
         return DESC;
     }
 
-    private int discount(VisitDay day, List<Food> orders){
+    private int discount(VisitDay day, List<Order> orders){
         if(day.isWeekend()){
             return weekendDiscount(orders);
         }
         return weekDayDiscount(orders);
     }
 
-    private int weekendDiscount(List<Food> orders ){
+    private int weekendDiscount(List<Order> orders ){
         return (int) (orders.stream()
-                        .filter((order) -> order.getCategory() == Category.MAIN_DISH)
+                        .filter((order) -> order.getFood().getCategory() == Category.MAIN_DISH)
                         .count()*DISCOUNT_PRICE);
     }
 
-    private int weekDayDiscount(List<Food> orders){
+    private int weekDayDiscount(List<Order> orders){
         return (int) (orders.stream()
-                .filter((order) -> order.getCategory() == Category.DESERT)
+                .filter((order) -> order.getFood().getCategory() == Category.DESERT)
                 .count()*DISCOUNT_PRICE);
     }
 }
