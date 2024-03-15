@@ -16,10 +16,10 @@
     - [X] 값 비교
         - [X] 결과값 enum반환
             - [X] 유닛 테스팅
-- [ ] view
-    - [ ] outputView (출력)
-    - [ ] inputView (입력)
+- [x] view
+    - [x] outputView (출력)
+    - [x] inputView (입력)
 - [x] Input validator
-    - [ ] 예산 유효성 검사
-    - [ ] normal Number 유효성 검사
-    - [ ] bonus Number 유효성 검사
+    - [x] 예산 유효성 검사
+    - [x] normal Number 유효성 검사
+    - [x] bonus Number 유효성 검사
