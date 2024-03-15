@@ -8,7 +8,7 @@ import christmas.service.BadgeService;
 import christmas.service.DiscountService;
 import christmas.service.GiftService;
 import java.util.Map;
-import view.OutputView;
+import christmas.view.OutputView;
 
 public class EventController {
     private Visitor visitor;

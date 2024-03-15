@@ -1,4 +1,4 @@
-package view;
+package christmas.view;
 
 import christmas.domain.VisitorResult;
 import christmas.domain.constant.Badge;
