@@ -1,11 +1,11 @@
 package christmas.view;
 
+import christmas.domain.Order;
 import christmas.domain.VisitorResult;
 import christmas.domain.constant.Badge;
 import christmas.domain.constant.Food;
 import java.util.List;
 import java.util.Map;
-import org.junit.jupiter.api.Order;
 
 public class OutputView {
     public static final String WELCOME_MSG = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
@@ -33,12 +33,20 @@ public class OutputView {
 
     public static void printResult(VisitorResult result){
         System.out.printf(EVENT_PREVIEW_HEADER, result.getDay());
+
+        printOrderList(result.getOrders());
+        printTotalPriceBeforeEvent(result.getTotalPrice());
+        printGiftMenu(result.getGift());
+        printEvent(result.getEventResult());
+        printTotalEventPrice(result.getEventResult());
+        printTotalPrice(result.getTotalPrice(), result.getGift(), result.getEventResult());
+        printBadge(result.getBadge());
     }
 
-    private static void printOrderList(List<Food> orders){
+    private static void printOrderList(List<Order> orders){
         System.out.println(ORDER_LIST_HEADER);
-        for(Food food : orders){
-            System.out.println(food.getName());
+        for(Order order : orders){
+            System.out.println(order.getFood().getName() + " " + order.getAmount() + "개");
         }
         System.out.println();
     }
