@@ -1,11 +1,11 @@
 package lotto.model;
 
 public class LottoResult {
-
-
+    private final Lotto normalNumber;
     private final BonusNumber bonusNumber;
 
     public LottoResult(Lotto normalNumber, BonusNumber bonusNumber) {
+        validate(normalNumber, bonusNumber);
         this.normalNumber = normalNumber;
         this.bonusNumber = bonusNumber;
     }
@@ -13,8 +13,6 @@ public class LottoResult {
     public Lotto getNormalNumber() {
         return normalNumber;
     }
-
-    private final Lotto normalNumber;
 
     public BonusNumber getBonusNumber() {
         return bonusNumber;
