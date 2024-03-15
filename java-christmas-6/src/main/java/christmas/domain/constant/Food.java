@@ -1,5 +1,7 @@
 package christmas.domain.constant;
 
+import java.util.Arrays;
+
 public enum Food {
     MUSHROOM_SOUP(Category.APPETIZER, 6000,"양송이수프"), TAPAS(Category.APPETIZER, 5500, "타파스"), CEASAR_SALAD(Category.APPETIZER, 8000, "시저샐러드"),
     T_BORN_STAKE(Category.MAIN_DISH, 55000,"티본스테이크"), BBQ_LIB(Category.MAIN_DISH, 54000, "바비큐립"), SEA_FOOD_PASTA(Category.MAIN_DISH, 35000, "해산물파스타"), CHRISTMAS_PASTA( Category.MAIN_DISH, 25000, "크리스마스파스타"),
@@ -25,5 +27,14 @@ public enum Food {
 
     public String getName() {
         return name;
+    }
+
+    public static Food getFood(String name){
+        for(Food food : Food.values()){
+            if(food.getName().equals(name)){
+                return food;
+            }
+        }
+        throw new IllegalArgumentException("[ERROR] 일치하는 음식이 없습니다.");
     }
 }
