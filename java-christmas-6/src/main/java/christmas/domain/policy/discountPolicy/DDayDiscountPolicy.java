@@ -9,10 +9,11 @@ public class DDayDiscountPolicy implements DiscountPolicy {
     private final Integer D_DAY_DISCOUNT_PRICE = 100;
     @Override
     public int getDiscount(Visitor visitor) {
-        if(!isDiscountable(visitor)){
-            return 0;
+        if(isDiscountable(visitor)){
+            return discount(visitor.getVisitDay());
         }
-        return discount(visitor.getVisitDay());
+
+        return 0;
     }
 
     @Override
